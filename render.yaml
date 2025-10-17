@@ -1,9 +1,13 @@
+# ===========================================
+# Gotify Render Deployment Configuration
+# ===========================================
+
 services:
   - type: web
     name: gotify
     env: docker
     plan: free
-    region: oregon
+    region: oregon           # Or another region close to you
     dockerfilePath: ./Dockerfile
     envVars:
       - key: GOTIFY_SERVER_PORT
