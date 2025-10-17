@@ -1,0 +1,22 @@
+# ===========================================
+# Gotify Render Deployment Configuration
+# ===========================================
+
+services:
+  - type: web
+    name: gotify
+    env: docker
+    plan: free                     # Free 750-hour plan
+    region: oregon                 # Or choose your nearest region
+    branch: master
+    disk:
+      name: gotify-data
+      mountPath: /app/data         # Keeps users/messages safe
+      sizeGB: 1
+    envVars:
+      - key: GOTIFY_SERVER_PORT
+        value: 80
+      - key: GOTIFY_SERVER_KEEPALIVEPERIODSECONDS
+        value: "0"
+    healthCheckPath: /
+    autoDeploy: true
